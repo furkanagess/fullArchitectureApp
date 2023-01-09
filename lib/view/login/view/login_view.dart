@@ -3,6 +3,7 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:random_full_app/core/base/base_widget.dart';
 import 'package:random_full_app/core/extension/context_extension.dart';
 import 'package:random_full_app/core/images/image_constants.dart';
+import 'package:random_full_app/core/localization/app_strings.dart';
 import 'package:random_full_app/view/login/viewModel/login_view_model.dart';
 
 class LoginView extends StatelessWidget {
@@ -79,8 +80,8 @@ class LoginView extends StatelessWidget {
       indicatorWeight: 5,
       indicatorColor: context.colors.onPrimary,
       tabs: [
-        Tab(text: "Login"),
-        Tab(text: "Signup"),
+        Tab(text: AppStrings.instance.login),
+        Tab(text: AppStrings.instance.signUp),
       ],
     );
   }
@@ -90,15 +91,15 @@ class LoginView extends StatelessWidget {
       key: value.formState,
       child: Column(
         children: [
-          Spacer(flex: 6),
+          const Spacer(flex: 6),
           buildFormEmail(context),
           buildFormPassword(context, value),
-          Spacer(),
+          const Spacer(),
           buildTextForgot(),
-          Spacer(flex: 6),
+          const Spacer(flex: 6),
           buildLoginButton(context),
           buildWrapForgot(),
-          Spacer()
+          const Spacer()
         ],
       ),
     );
@@ -122,7 +123,7 @@ class LoginView extends StatelessWidget {
                   : Icons.visibility_off);
             }),
           ),
-          labelText: "Password",
+          labelText: AppStrings.instance.password,
           icon: buildContainerIcon(context, Icons.password_outlined),
         ),
       );
@@ -132,7 +133,7 @@ class LoginView extends StatelessWidget {
   TextFormField buildFormEmail(BuildContext context) {
     return TextFormField(
       decoration: InputDecoration(
-        labelText: "Email",
+        labelText: AppStrings.instance.email,
         icon: buildContainerIcon(context, Icons.mail_outline_outlined),
       ),
     );
@@ -149,10 +150,10 @@ class LoginView extends StatelessWidget {
     );
   }
 
-  Widget buildTextForgot() => const Align(
+  Widget buildTextForgot() => Align(
         alignment: Alignment.centerRight,
         child: Text(
-          "Forgot Password?",
+          AppStrings.instance.forgot,
           textAlign: TextAlign.end,
         ),
       );
@@ -161,12 +162,12 @@ class LoginView extends StatelessWidget {
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
           padding: context.paddingNormal,
-          shape: StadiumBorder(),
+          shape: const StadiumBorder(),
           backgroundColor: context.colors.onPrimary),
       onPressed: () {},
       child: Center(
         child: Text(
-          "Enter to App",
+          AppStrings.instance.enterToApp,
           style: context.textTheme.headline5,
         ),
       ),
@@ -177,10 +178,10 @@ class LoginView extends StatelessWidget {
     return Wrap(
       crossAxisAlignment: WrapCrossAlignment.center,
       children: [
-        Text("Don't have an account ?"),
+        Text(AppStrings.instance.haveAccount),
         TextButton(
           onPressed: () {},
-          child: Text("Signup"),
+          child: Text(AppStrings.instance.signUp),
         ),
       ],
     );

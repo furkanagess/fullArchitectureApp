@@ -8,5 +8,12 @@ class AppStrings {
 
   AppStrings._init();
 
-  final String cartTitle = "Cart";
+  // Login View Strings
+  final String login = "Login";
+  final String signUp = "Signup";
+  final String password = "Password";
+  final String email = "Email";
+  final String forgot = "Forgot Password?";
+  final String enterToApp = "Enter to App";
+  final String haveAccount = "Don't have an account";
 }
