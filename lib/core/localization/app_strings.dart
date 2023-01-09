@@ -15,5 +15,5 @@ class AppStrings {
   final String email = "Email";
   final String forgot = "Forgot Password?";
   final String enterToApp = "Enter to App";
-  final String haveAccount = "Don't have an account";
+  final String haveAccount = "Don't have an account?";
 }
