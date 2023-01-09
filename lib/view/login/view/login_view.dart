@@ -25,39 +25,8 @@ class LoginView extends StatelessWidget {
             body: SafeArea(
               child: Column(
                 children: [
-                  AnimatedContainer(
-                    duration: context.lowDuration,
-                    height: context.mediaQuery.viewInsets.bottom > 0
-                        ? 0
-                        : context.height * 0.3,
-                    color: context.colors.background,
-                    child: Center(
-                      child: Image.asset(ImageConstants.instance.cat),
-                    ),
-                  ),
-                  Container(
-                    decoration: BoxDecoration(
-                      color: context.colors.background,
-                      borderRadius: BorderRadius.vertical(
-                        bottom: Radius.circular(50),
-                      ),
-                    ),
-                    child: Padding(
-                      padding: EdgeInsets.only(left: 50, right: 50, bottom: 5),
-                      child: TabBar(
-                        labelColor: Colors.black,
-                        indicatorSize: TabBarIndicatorSize.label,
-                        labelStyle: context.textTheme.headline5,
-                        unselectedLabelStyle: context.textTheme.headline5,
-                        indicatorWeight: 5,
-                        indicatorColor: context.colors.onPrimary,
-                        tabs: [
-                          Tab(text: "Login"),
-                          Tab(text: "Signup"),
-                        ],
-                      ),
-                    ),
-                  ),
+                  buildAnimatedContainerImage(context),
+                  buildContainerTabBar(context),
                   Expanded(
                     flex: 6,
                     child: Padding(
@@ -71,6 +40,48 @@ class LoginView extends StatelessWidget {
           ),
         );
       },
+    );
+  }
+
+  AnimatedContainer buildAnimatedContainerImage(BuildContext context) {
+    return AnimatedContainer(
+      duration: context.lowDuration,
+      height:
+          context.mediaQuery.viewInsets.bottom > 0 ? 0 : context.height * 0.3,
+      color: context.colors.background,
+      child: Center(
+        child: Image.asset(ImageConstants.instance.cat),
+      ),
+    );
+  }
+
+  Container buildContainerTabBar(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+        color: context.colors.background,
+        borderRadius: const BorderRadius.vertical(
+          bottom: Radius.circular(50),
+        ),
+      ),
+      child: Padding(
+        padding: const EdgeInsets.only(left: 50, right: 50, bottom: 5),
+        child: buildTabBar(context),
+      ),
+    );
+  }
+
+  TabBar buildTabBar(BuildContext context) {
+    return TabBar(
+      labelColor: Colors.black,
+      indicatorSize: TabBarIndicatorSize.label,
+      labelStyle: context.textTheme.headline5,
+      unselectedLabelStyle: context.textTheme.headline5,
+      indicatorWeight: 5,
+      indicatorColor: context.colors.onPrimary,
+      tabs: [
+        Tab(text: "Login"),
+        Tab(text: "Signup"),
+      ],
     );
   }
 
@@ -138,7 +149,7 @@ class LoginView extends StatelessWidget {
     );
   }
 
-  Widget buildTextForgot() => Align(
+  Widget buildTextForgot() => const Align(
         alignment: Alignment.centerRight,
         child: Text(
           "Forgot Password?",
