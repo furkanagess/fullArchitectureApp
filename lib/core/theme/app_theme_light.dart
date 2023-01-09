@@ -13,19 +13,30 @@ class AppThemeLight {
 
   ThemeData get theme => ThemeData(
         colorScheme: _appColorScheme,
+        inputDecorationTheme: InputDecorationTheme(
+          enabledBorder: UnderlineInputBorder(
+            borderSide: BorderSide(color: _appColorScheme.onPrimary),
+          ),
+          border: UnderlineInputBorder(
+            borderSide: BorderSide(color: _appColorScheme.onPrimary),
+          ),
+          focusedBorder: UnderlineInputBorder(
+            borderSide: BorderSide(color: _appColorScheme.onPrimary),
+          ),
+        ),
       );
 
   ColorScheme get _appColorScheme {
     return const ColorScheme(
       brightness: Brightness.light,
-      primary: Colors.black,
-      onPrimary: Colors.greenAccent,
+      primary: Colors.black, //used
+      onPrimary: Colors.greenAccent, //used
       secondary: Colors.green,
       onSecondary: Colors.black38,
-      error: Colors.red,
-      onError: Colors.red,
-      background: Colors.white,
-      onBackground: Colors.black87,
+      error: Colors.red, //used
+      onError: Colors.pink,
+      background: Colors.white, //used
+      onBackground: Color(0xfff1f3f8), //used
       surface: Colors.blue,
       onSurface: Colors.white30,
     );

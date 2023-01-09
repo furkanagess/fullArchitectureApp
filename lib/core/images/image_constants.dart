@@ -9,11 +9,9 @@ class ImageConstants {
 
   ImageConstants._init();
 
-  final fruit = "fruit".toPng;
-  final dessert = "dessert".toPng;
-  final vegis = "vegis".toPng;
+  final cat = "cat".toPng;
 }
 
 extension _ImageExtension on String {
-  String get toPng => "assets/images/$this.png";
+  String get toPng => "assets/image/$this.png";
 }

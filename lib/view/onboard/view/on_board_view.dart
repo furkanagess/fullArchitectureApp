@@ -119,7 +119,7 @@ class OnBoardView extends StatelessWidget {
             model.description,
             style: context.textTheme.subtitle1?.copyWith(
               fontWeight: FontWeight.w400,
-              color: context.colors.onBackground,
+              color: context.colors.primary,
             ),
             textAlign: TextAlign.center,
           ),

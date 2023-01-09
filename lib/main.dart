@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:random_full_app/view/login/view/login_view.dart';
 import 'package:random_full_app/view/onboard/view/on_board_view.dart';
 
 void main() => runApp(const MyApp());
@@ -11,7 +12,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Material App',
-      home: OnBoardView(),
+      home: LoginView(),
     );
   }
 }
