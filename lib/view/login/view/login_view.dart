@@ -73,7 +73,7 @@ class LoginView extends StatelessWidget {
 
   TabBar buildTabBar(BuildContext context) {
     return TabBar(
-      labelColor: Colors.black,
+      labelColor: context.colors.primary,
       indicatorSize: TabBarIndicatorSize.label,
       labelStyle: context.textTheme.headline5,
       unselectedLabelStyle: context.textTheme.headline5,
@@ -98,7 +98,7 @@ class LoginView extends StatelessWidget {
           buildTextForgot(),
           const Spacer(flex: 6),
           buildLoginButton(context),
-          buildWrapForgot(),
+          buildWrapForgot(context),
           const Spacer()
         ],
       ),
@@ -113,18 +113,18 @@ class LoginView extends StatelessWidget {
           value!.isNotEmpty ? null : "This field is required";
         },
         decoration: InputDecoration(
-          suffixIcon: ElevatedButton(
+          suffixIcon: IconButton(
             onPressed: () {
               viewModel.isLockStateChange();
             },
-            child: Observer(builder: (_) {
+            icon: Observer(builder: (_) {
               return Icon(viewModel.isLockOpen
-                  ? Icons.visibility
-                  : Icons.visibility_off);
+                  ? Icons.visibility_off
+                  : Icons.visibility);
             }),
           ),
           labelText: AppStrings.instance.password,
-          icon: buildContainerIcon(context, Icons.password_outlined),
+          icon: buildContainerIcon(context, Icons.password),
         ),
       );
     });
@@ -134,7 +134,7 @@ class LoginView extends StatelessWidget {
     return TextFormField(
       decoration: InputDecoration(
         labelText: AppStrings.instance.email,
-        icon: buildContainerIcon(context, Icons.mail_outline_outlined),
+        icon: buildContainerIcon(context, Icons.mail),
       ),
     );
   }
@@ -174,14 +174,20 @@ class LoginView extends StatelessWidget {
     );
   }
 
-  Wrap buildWrapForgot() {
+  Wrap buildWrapForgot(BuildContext context) {
     return Wrap(
       crossAxisAlignment: WrapCrossAlignment.center,
       children: [
         Text(AppStrings.instance.haveAccount),
         TextButton(
           onPressed: () {},
-          child: Text(AppStrings.instance.signUp),
+          child: Text(
+            AppStrings.instance.signUp,
+            style: context.textTheme.bodyMedium?.copyWith(
+              color: context.colors.onPrimary,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
         ),
       ],
     );

@@ -45,6 +45,7 @@ dependencies:
   # network
   vexana:
   dio:
+  shared_preferences: ^2.0.15
 
  
  
