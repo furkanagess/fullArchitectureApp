@@ -1,4 +1,7 @@
+import 'dart:js';
+
 import 'package:flutter/material.dart';
+import 'package:random_full_app/core/extension/context_extension.dart';
 
 class AppThemeLight {
   static AppThemeLight? _instance;
@@ -12,19 +15,47 @@ class AppThemeLight {
   AppThemeLight._init();
 
   ThemeData get theme => ThemeData(
+        tabBarTheme: _tabBarTheme,
+        appBarTheme: _appBarTheme,
         colorScheme: _appColorScheme,
-        inputDecorationTheme: InputDecorationTheme(
-          enabledBorder: UnderlineInputBorder(
-            borderSide: BorderSide(color: _appColorScheme.onPrimary),
-          ),
-          border: UnderlineInputBorder(
-            borderSide: BorderSide(color: _appColorScheme.onPrimary),
-          ),
-          focusedBorder: UnderlineInputBorder(
-            borderSide: BorderSide(color: _appColorScheme.onPrimary),
-          ),
-        ),
+        inputDecorationTheme: _inputDecorationTheme,
       );
+
+  TabBarTheme get _tabBarTheme {
+    return TabBarTheme(
+      labelColor: _appColorScheme.onPrimary,
+      unselectedLabelColor: _appColorScheme.onPrimary.withOpacity(0.2),
+    );
+  }
+
+  AppBarTheme get _appBarTheme {
+    return AppBarTheme(
+      iconTheme: IconThemeData(
+        color: _appColorScheme.primary,
+        size: 15,
+      ),
+    );
+  }
+
+  InputDecorationTheme get _inputDecorationTheme {
+    return InputDecorationTheme(
+      enabledBorder: UnderlineInputBorder(
+        borderSide: BorderSide(
+          color: _appColorScheme.onPrimary,
+        ),
+      ),
+      border: UnderlineInputBorder(
+        borderSide: BorderSide(
+          color: _appColorScheme.onPrimary,
+        ),
+      ),
+      focusedBorder: UnderlineInputBorder(
+        borderSide: BorderSide(
+          color: _appColorScheme.onPrimary,
+        ),
+      ),
+    );
+  }
 
   ColorScheme get _appColorScheme {
     return const ColorScheme(
