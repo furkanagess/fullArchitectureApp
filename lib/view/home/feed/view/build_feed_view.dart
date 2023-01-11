@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:random_full_app/core/base/base_widget.dart';
 import 'package:random_full_app/view/home/feed/viewModel/build_feed_view_model.dart';
+import 'package:random_full_app/core/extension/context_extension.dart';
 
 class BuildFeedView extends StatelessWidget {
   const BuildFeedView({super.key});
@@ -21,20 +22,44 @@ class BuildFeedView extends StatelessWidget {
             children: [
               TabBar(
                 indicatorSize: TabBarIndicatorSize.label,
+                labelColor: context.colors.onPrimary,
                 tabs: [
+                  Tab(
+                    text: "Latest",
+                  ),
                   Tab(
                     text: "Home",
                   ),
                   Tab(
-                    text: "",
+                    text: "Music",
                   ),
                   Tab(
-                    text: "",
-                  ),
-                  Tab(
-                    text: "",
+                    text: "Style",
                   ),
                 ],
+              ),
+              Container(
+                height: 300,
+                child: Stack(
+                  children: [
+                    Positioned.fill(
+                      bottom: 100,
+                      child: Container(
+                        color: context.colors.error,
+                      ),
+                    ),
+                    Positioned.fill(
+                      top: 150,
+                      left: 10,
+                      right: 10,
+                      child: Column(
+                        children: [
+                          ListTile(),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ],
           ),
