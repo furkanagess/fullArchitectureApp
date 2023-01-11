@@ -15,14 +15,16 @@ class BuildFeedView extends StatelessWidget {
         model.init();
       },
       onPageBuilder: (context, value) => Scaffold(
-        appBar: _buildAppBar(),
+        appBar: _buildAppBar(context),
         body: DefaultTabController(
           length: 4,
           child: ListView(
             children: [
               TabBar(
+                indicatorColor: context.colors.onPrimary,
+                labelStyle: context.textTheme.bodyLarge,
                 indicatorSize: TabBarIndicatorSize.label,
-                labelColor: context.colors.onPrimary,
+                labelColor: context.colors.primary,
                 tabs: [
                   Tab(
                     text: "Latest",
@@ -38,29 +40,43 @@ class BuildFeedView extends StatelessWidget {
                   ),
                 ],
               ),
-              Container(
+              SizedBox(
                 height: 300,
-                child: Stack(
-                  children: [
-                    Positioned.fill(
-                      bottom: 100,
-                      child: Container(
-                        color: context.colors.error,
-                      ),
-                    ),
-                    Positioned.fill(
-                      top: 150,
-                      left: 10,
-                      right: 10,
-                      child: Column(
-                        children: [
-                          ListTile(),
-                        ],
-                      ),
-                    ),
-                  ],
+                child: PageView.builder(
+                  controller: PageController(viewportFraction: 0.9),
+                  itemCount: 4,
+                  itemBuilder: (context, index) => buildStack(context),
                 ),
               ),
+              Text(
+                "Recommended",
+                style: context.textTheme.headline5
+                    ?.copyWith(color: context.colors.primary),
+              ),
+              ListView.builder(
+                physics: NeverScrollableScrollPhysics(),
+                itemCount: 4,
+                shrinkWrap: true,
+                itemBuilder: (context, index) => SizedBox(
+                  height: context.dynamicHeight(0.2),
+                  child: Card(
+                    child: Row(
+                      children: [
+                        Expanded(
+                          flex: 2,
+                          child: Container(
+                            color: Colors.red,
+                          ),
+                        ),
+                        Expanded(
+                          flex: 8,
+                          child: buildColumnUserCard(context),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              )
             ],
           ),
         ),
@@ -68,18 +84,79 @@ class BuildFeedView extends StatelessWidget {
     );
   }
 
-  AppBar _buildAppBar() {
+  Widget buildStack(BuildContext context) {
+    return Padding(
+      padding: context.paddingLowHorizontal,
+      child: Stack(
+        children: [
+          Positioned.fill(
+            bottom: 100,
+            child: Container(
+              color: context.colors.error,
+            ),
+          ),
+          Positioned(
+            top: 150,
+            left: 10,
+            right: 10,
+            child: Container(
+              color: context.colors.onPrimary,
+              child: Padding(
+                padding: context.paddingLow,
+                child: buildColumnUserCard(context),
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Column buildColumnUserCard(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        ListTile(
+          contentPadding: EdgeInsets.zero,
+          leading: CircleAvatar(),
+          title: Text("Bilmem ne"),
+          subtitle: Text("Description"),
+          trailing: IconButton(
+            onPressed: () {},
+            icon: Icon(
+              Icons.favorite,
+              color: context.colors.onPrimary,
+            ),
+          ),
+        ),
+        Text(
+          "Awesome" * 2,
+          style: context.textTheme.headline5
+              ?.copyWith(fontWeight: FontWeight.bold),
+        ),
+        Text("Description" * 2),
+      ],
+    );
+  }
+
+  AppBar _buildAppBar(BuildContext context) {
     return AppBar(
       backgroundColor: Colors.transparent,
       elevation: 0,
       leading: IconButton(
         onPressed: () {},
-        icon: Icon(Icons.menu),
+        icon: Icon(
+          Icons.menu,
+          color: context.colors.primary,
+        ),
       ),
       actions: [
         IconButton(
           onPressed: () {},
-          icon: Icon(Icons.search),
+          icon: Icon(
+            Icons.search,
+            color: context.colors.primary,
+          ),
         ),
       ],
     );

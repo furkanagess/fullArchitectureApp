@@ -1,5 +1,3 @@
-import 'dart:js';
-
 import 'package:flutter/material.dart';
 import 'package:random_full_app/core/extension/context_extension.dart';
 
