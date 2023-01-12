@@ -10,6 +10,7 @@ class ImageConstants {
   ImageConstants._init();
 
   final cat = "cat".toPng;
+  final person = "person".toPng;
 }
 
 extension _ImageExtension on String {

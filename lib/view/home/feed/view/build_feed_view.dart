@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:random_full_app/core/base/base_widget.dart';
+import 'package:random_full_app/core/images/image_constants.dart';
+import 'package:random_full_app/core/localization/app_strings.dart';
 import 'package:random_full_app/view/home/feed/viewModel/build_feed_view_model.dart';
 import 'package:random_full_app/core/extension/context_extension.dart';
 
@@ -27,16 +29,16 @@ class BuildFeedView extends StatelessWidget {
                 labelColor: context.colors.primary,
                 tabs: [
                   Tab(
-                    text: "Latest",
+                    text: AppStrings.instance.latest,
                   ),
                   Tab(
-                    text: "Home",
+                    text: AppStrings.instance.dogs,
                   ),
                   Tab(
-                    text: "Music",
+                    text: AppStrings.instance.cats,
                   ),
                   Tab(
-                    text: "Style",
+                    text: AppStrings.instance.others,
                   ),
                 ],
               ),
@@ -48,35 +50,46 @@ class BuildFeedView extends StatelessWidget {
                   itemBuilder: (context, index) => buildStack(context),
                 ),
               ),
-              Text(
-                "Recommended",
-                style: context.textTheme.headline5
-                    ?.copyWith(color: context.colors.primary),
+              Padding(
+                padding: context.paddingNormalHorizontal,
+                child: Text(
+                  AppStrings.instance.recommended,
+                  style: context.textTheme.headline5?.copyWith(
+                    color: context.colors.primary,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
               ),
               ListView.builder(
-                physics: NeverScrollableScrollPhysics(),
+                physics: const NeverScrollableScrollPhysics(),
                 itemCount: 4,
                 shrinkWrap: true,
                 itemBuilder: (context, index) => SizedBox(
-                  height: context.dynamicHeight(0.2),
-                  child: Card(
-                    child: Row(
-                      children: [
-                        Expanded(
-                          flex: 2,
-                          child: Container(
-                            color: Colors.red,
+                  height: context.dynamicHeight(0.21),
+                  child: Padding(
+                    padding: context.paddingLow,
+                    child: Card(
+                      shadowColor: context.colors.onPrimary,
+                      elevation: 7,
+                      child: Row(
+                        children: [
+                          Expanded(
+                            flex: 2,
+                            child: Image.asset(ImageConstants.instance.cat),
                           ),
-                        ),
-                        Expanded(
-                          flex: 8,
-                          child: buildColumnUserCard(context),
-                        ),
-                      ],
+                          Expanded(
+                            flex: 8,
+                            child: Padding(
+                              padding: context.paddingLow,
+                              child: buildColumnUserCard(context),
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ),
-              )
+              ),
             ],
           ),
         ),
@@ -91,9 +104,7 @@ class BuildFeedView extends StatelessWidget {
         children: [
           Positioned.fill(
             bottom: 100,
-            child: Container(
-              color: context.colors.error,
-            ),
+            child: Image.asset(ImageConstants.instance.cat),
           ),
           Positioned(
             top: 150,
@@ -103,7 +114,25 @@ class BuildFeedView extends StatelessWidget {
               color: context.colors.onPrimary,
               child: Padding(
                 padding: context.paddingLow,
-                child: buildColumnUserCard(context),
+                child: Card(
+                  shadowColor: context.colors.onPrimary,
+                  elevation: 7,
+                  child: Row(
+                    children: [
+                      Expanded(
+                        flex: 2,
+                        child: Image.asset(ImageConstants.instance.cat),
+                      ),
+                      Expanded(
+                        flex: 8,
+                        child: Padding(
+                          padding: context.paddingLow,
+                          child: buildColumnUserCard(context),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
               ),
             ),
           ),
@@ -118,9 +147,11 @@ class BuildFeedView extends StatelessWidget {
       children: [
         ListTile(
           contentPadding: EdgeInsets.zero,
-          leading: CircleAvatar(),
-          title: Text("Bilmem ne"),
-          subtitle: Text("Description"),
+          leading: CircleAvatar(
+            backgroundColor: context.colors.onPrimary,
+          ),
+          title: Text(AppStrings.instance.name),
+          subtitle: Text(AppStrings.instance.pet),
           trailing: IconButton(
             onPressed: () {},
             icon: Icon(
@@ -130,11 +161,9 @@ class BuildFeedView extends StatelessWidget {
           ),
         ),
         Text(
-          "Awesome" * 2,
-          style: context.textTheme.headline5
-              ?.copyWith(fontWeight: FontWeight.bold),
+          AppStrings.instance.desc,
+          style: context.textTheme.bodyMedium,
         ),
-        Text("Description" * 2),
       ],
     );
   }
