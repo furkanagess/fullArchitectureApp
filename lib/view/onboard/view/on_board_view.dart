@@ -62,7 +62,7 @@ class OnBoardView extends StatelessWidget {
           flex: 2,
           child: buildListViewAvatar(viewModel),
         ),
-        Spacer(),
+        const Spacer(),
         buildSkipFAB(context)
       ],
     );

@@ -23,7 +23,7 @@ class BuildFeedView extends StatelessWidget {
           child: ListView(
             children: [
               buildTabBAR(context),
-              buildPageView(),
+              buildPageView(context),
               buildRecomText(context),
               buildFeedListView(),
             ],
@@ -33,7 +33,7 @@ class BuildFeedView extends StatelessWidget {
     );
   }
 
-  SizedBox buildPageView() {
+  SizedBox buildPageView(BuildContext context) {
     return SizedBox(
       height: 300,
       child: PageView.builder(
