@@ -22,75 +22,91 @@ class BuildFeedView extends StatelessWidget {
           length: 4,
           child: ListView(
             children: [
-              TabBar(
-                indicatorColor: context.colors.onPrimary,
-                labelStyle: context.textTheme.bodyLarge,
-                indicatorSize: TabBarIndicatorSize.label,
-                labelColor: context.colors.primary,
-                tabs: [
-                  Tab(
-                    text: AppStrings.instance.latest,
-                  ),
-                  Tab(
-                    text: AppStrings.instance.dogs,
-                  ),
-                  Tab(
-                    text: AppStrings.instance.cats,
-                  ),
-                  Tab(
-                    text: AppStrings.instance.others,
-                  ),
-                ],
-              ),
-              SizedBox(
-                height: 300,
-                child: PageView.builder(
-                  controller: PageController(viewportFraction: 0.9),
-                  itemCount: 4,
-                  itemBuilder: (context, index) => buildStack(context),
+              buildTabBAR(context),
+              buildPageView(),
+              buildRecomText(context),
+              buildFeedListView(),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  SizedBox buildPageView() {
+    return SizedBox(
+      height: 300,
+      child: PageView.builder(
+        controller: PageController(viewportFraction: 1),
+        itemCount: 4,
+        itemBuilder: (context, index) => buildStack(context),
+      ),
+    );
+  }
+
+  TabBar buildTabBAR(BuildContext context) {
+    return TabBar(
+      indicatorColor: context.colors.onPrimary,
+      labelStyle: context.textTheme.bodyLarge,
+      indicatorSize: TabBarIndicatorSize.label,
+      labelColor: context.colors.primary,
+      tabs: [
+        Tab(
+          text: AppStrings.instance.latest,
+        ),
+        Tab(
+          text: AppStrings.instance.dogs,
+        ),
+        Tab(
+          text: AppStrings.instance.cats,
+        ),
+        Tab(
+          text: AppStrings.instance.others,
+        ),
+      ],
+    );
+  }
+
+  Padding buildRecomText(BuildContext context) {
+    return Padding(
+      padding: context.paddingNormalHorizontal,
+      child: Text(
+        AppStrings.instance.recommended,
+        style: context.textTheme.headline5?.copyWith(
+          color: context.colors.primary,
+          fontWeight: FontWeight.bold,
+        ),
+      ),
+    );
+  }
+
+  ListView buildFeedListView() {
+    return ListView.builder(
+      physics: const NeverScrollableScrollPhysics(),
+      itemCount: 4,
+      shrinkWrap: true,
+      itemBuilder: (context, index) => SizedBox(
+        height: context.dynamicHeight(0.21),
+        child: Padding(
+          padding: context.paddingLow,
+          child: Card(
+            shadowColor: context.colors.onPrimary,
+            elevation: 7,
+            child: Row(
+              children: [
+                Expanded(
+                  flex: 2,
+                  child: Image.asset(ImageConstants.instance.cat),
                 ),
-              ),
-              Padding(
-                padding: context.paddingNormalHorizontal,
-                child: Text(
-                  AppStrings.instance.recommended,
-                  style: context.textTheme.headline5?.copyWith(
-                    color: context.colors.primary,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
-              ListView.builder(
-                physics: const NeverScrollableScrollPhysics(),
-                itemCount: 4,
-                shrinkWrap: true,
-                itemBuilder: (context, index) => SizedBox(
-                  height: context.dynamicHeight(0.21),
+                Expanded(
+                  flex: 8,
                   child: Padding(
                     padding: context.paddingLow,
-                    child: Card(
-                      shadowColor: context.colors.onPrimary,
-                      elevation: 7,
-                      child: Row(
-                        children: [
-                          Expanded(
-                            flex: 2,
-                            child: Image.asset(ImageConstants.instance.cat),
-                          ),
-                          Expanded(
-                            flex: 8,
-                            child: Padding(
-                              padding: context.paddingLow,
-                              child: buildColumnUserCard(context),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
+                    child: buildColumnUserCard(context),
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),
