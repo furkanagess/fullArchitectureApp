@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:random_full_app/core/base/base_widget.dart';
-import 'package:random_full_app/core/extension/context_extension.dart';
-import 'package:random_full_app/core/images/image_constants.dart';
-import 'package:random_full_app/core/localization/app_strings.dart';
-import 'package:random_full_app/view/login/viewModel/login_view_model.dart';
+
+import '../../../core/base/base_widget.dart';
+import '../../../core/extension/context_extension.dart';
+import '../../../core/images/image_constants.dart';
+import '../../../core/localization/app_strings.dart';
+import '../viewModel/login_view_model.dart';
 
 class LoginView extends StatelessWidget {
   const LoginView({super.key});
@@ -47,8 +48,7 @@ class LoginView extends StatelessWidget {
   AnimatedContainer buildAnimatedContainerImage(BuildContext context) {
     return AnimatedContainer(
       duration: context.lowDuration,
-      height:
-          context.mediaQuery.viewInsets.bottom > 0 ? 0 : context.height * 0.3,
+      height: context.mediaQuery.viewInsets.bottom > 0 ? 0 : context.height * 0.3,
       color: context.colors.background,
       child: Center(
         child: Image.asset(ImageConstants.instance.cat),
@@ -118,9 +118,7 @@ class LoginView extends StatelessWidget {
               viewModel.isLockStateChange();
             },
             icon: Observer(builder: (_) {
-              return Icon(viewModel.isLockOpen
-                  ? Icons.visibility_off
-                  : Icons.visibility);
+              return Icon(viewModel.isLockOpen ? Icons.visibility_off : Icons.visibility);
             }),
           ),
           labelText: AppStrings.instance.password,
@@ -160,10 +158,7 @@ class LoginView extends StatelessWidget {
 
   ElevatedButton buildLoginButton(BuildContext context) {
     return ElevatedButton(
-      style: ElevatedButton.styleFrom(
-          padding: context.paddingNormal,
-          shape: const StadiumBorder(),
-          backgroundColor: context.colors.onPrimary),
+      style: ElevatedButton.styleFrom(padding: context.paddingNormal, shape: const StadiumBorder(), backgroundColor: context.colors.onPrimary),
       onPressed: () {},
       child: Center(
         child: Text(
