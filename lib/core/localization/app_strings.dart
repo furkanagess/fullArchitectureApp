@@ -26,4 +26,9 @@ class AppStrings {
   final String pet = "1 Tekir ve 1 Scottish";
   final String desc = "Kedi kumunu 2 günde bir temizlemeniz gerekmektedir.";
   final String recommended = "Recommended";
+
+  // Social Feed String
+  final String findFriends = "Find Friends";
+  final String follow = "Follow";
+  final String next = "Next";
 }

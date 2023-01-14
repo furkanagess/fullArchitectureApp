@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../../core/base/base_widget.dart';
 import '../../../../core/extension/context_extension.dart';
+import '../../../../core/localization/app_strings.dart';
 import '../viewModel/social_view_model.dart';
 
 class SocialView extends StatelessWidget {
@@ -22,46 +23,58 @@ class SocialView extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                "Find Friends",
-                style: context.textTheme.headline4?.copyWith(
-                  fontWeight: FontWeight.bold,
-                  color: context.colors.onSecondary,
-                ),
-              ),
+              buildText(context),
               Spacer(flex: 2),
-              TextField(
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(
-                    borderSide: BorderSide(),
-                  ),
-                  prefixIcon: Icon(
-                    Icons.search,
-                    color: context.colors.onSecondary,
-                  ),
-                ),
-              ),
+              buildTextField(context),
               Spacer(flex: 2),
               Expanded(
                 flex: 90,
-                child: ListView.builder(
-                  itemBuilder: (context, index) => ListTile(
-                    leading: CircleAvatar(backgroundColor: context.colors.onPrimary),
-                    title: Text("Eda Özdoğdu"),
-                    subtitle: Text("2 Scottish"),
-                    trailing: ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        padding: EdgeInsets.zero,
-                        backgroundColor: context.colors.onPrimary,
-                      ),
-                      onPressed: () {},
-                      child: Text("Follow"),
-                    ),
-                  ),
-                ),
+                child: buildListView(),
               )
             ],
           ),
+        ),
+      ),
+    );
+  }
+
+  Text buildText(BuildContext context) {
+    return Text(
+      AppStrings.instance.findFriends,
+      style: context.textTheme.headline4?.copyWith(
+        fontWeight: FontWeight.bold,
+        color: context.colors.onSecondary,
+      ),
+    );
+  }
+
+  TextField buildTextField(BuildContext context) {
+    return TextField(
+      decoration: InputDecoration(
+        border: OutlineInputBorder(
+          borderSide: BorderSide(),
+        ),
+        prefixIcon: Icon(
+          Icons.search,
+          color: context.colors.onSecondary,
+        ),
+      ),
+    );
+  }
+
+  ListView buildListView() {
+    return ListView.builder(
+      itemBuilder: (context, index) => ListTile(
+        leading: CircleAvatar(backgroundColor: context.colors.onPrimary),
+        title: Text(AppStrings.instance.name),
+        subtitle: Text(AppStrings.instance.pet),
+        trailing: ElevatedButton(
+          style: ElevatedButton.styleFrom(
+            padding: EdgeInsets.zero,
+            backgroundColor: context.colors.onPrimary,
+          ),
+          onPressed: () {},
+          child: Text(AppStrings.instance.follow),
         ),
       ),
     );
@@ -86,8 +99,8 @@ class SocialView extends StatelessWidget {
         TextButton(
           onPressed: () {},
           child: Text(
-            "Next",
-            style: context.textTheme.headline6?.copyWith(
+            AppStrings.instance.next,
+            style: context.textTheme.headline5?.copyWith(
               color: context.colors.onPrimary,
             ),
           ),
