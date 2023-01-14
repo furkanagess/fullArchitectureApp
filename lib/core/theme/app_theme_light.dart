@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:random_full_app/core/extension/context_extension.dart';
 
 class AppThemeLight {
   static AppThemeLight? _instance;
@@ -37,21 +36,15 @@ class AppThemeLight {
 
   InputDecorationTheme get _inputDecorationTheme {
     return InputDecorationTheme(
-      enabledBorder: UnderlineInputBorder(
-        borderSide: BorderSide(
-          color: _appColorScheme.onPrimary,
-        ),
+      fillColor: Colors.white,
+      filled: true,
+      enabledBorder: OutlineInputBorder(
+        borderSide: BorderSide(width: 0.3),
       ),
-      border: UnderlineInputBorder(
-        borderSide: BorderSide(
-          color: _appColorScheme.onPrimary,
-        ),
+      border: OutlineInputBorder(
+        borderSide: BorderSide(width: 0.3),
       ),
-      focusedBorder: UnderlineInputBorder(
-        borderSide: BorderSide(
-          color: _appColorScheme.onPrimary,
-        ),
-      ),
+      focusedBorder: OutlineInputBorder(),
     );
   }
 
