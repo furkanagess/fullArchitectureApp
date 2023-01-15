@@ -24,9 +24,9 @@ class SocialView extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               buildText(context),
-              Spacer(flex: 2),
+              const Spacer(flex: 2),
               buildTextField(context),
-              Spacer(flex: 2),
+              const Spacer(flex: 2),
               Expanded(
                 flex: 90,
                 child: buildListView(),
@@ -51,7 +51,7 @@ class SocialView extends StatelessWidget {
   TextField buildTextField(BuildContext context) {
     return TextField(
       decoration: InputDecoration(
-        border: OutlineInputBorder(
+        border: const OutlineInputBorder(
           borderSide: BorderSide(),
         ),
         prefixIcon: Icon(
