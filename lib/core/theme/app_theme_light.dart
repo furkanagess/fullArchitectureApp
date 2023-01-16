@@ -35,7 +35,7 @@ class AppThemeLight {
   }
 
   InputDecorationTheme get _inputDecorationTheme {
-    return InputDecorationTheme(
+    return const InputDecorationTheme(
       fillColor: Colors.white,
       filled: true,
       enabledBorder: OutlineInputBorder(
