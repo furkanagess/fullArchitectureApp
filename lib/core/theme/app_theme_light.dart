@@ -54,7 +54,7 @@ class AppThemeLight {
       primary: Colors.black, //used
       onPrimary: Colors.greenAccent, //used
       secondary: Colors.green,
-      onSecondary: Colors.black38,
+      onSecondary: Colors.black54,
       error: Colors.red, //used
       onError: Colors.pink,
       background: Colors.white, //used

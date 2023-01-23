@@ -5,6 +5,7 @@ import '../../../core/base/base_widget.dart';
 import '../../../core/extension/context_extension.dart';
 import '../../../core/images/image_constants.dart';
 import '../../../core/localization/app_strings.dart';
+import '../../home/feed/view/build_feed_view.dart';
 import '../viewModel/login_view_model.dart';
 
 class LoginView extends StatelessWidget {
@@ -159,7 +160,13 @@ class LoginView extends StatelessWidget {
   ElevatedButton buildLoginButton(BuildContext context) {
     return ElevatedButton(
       style: ElevatedButton.styleFrom(padding: context.paddingNormal, shape: const StadiumBorder(), backgroundColor: context.colors.onPrimary),
-      onPressed: () {},
+      onPressed: () {
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => BuildFeedView(),
+            ));
+      },
       child: Center(
         child: Text(
           AppStrings.instance.enterToApp,

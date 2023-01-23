@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'view/home/social/view/social_view.dart';
+import 'view/onboard/view/on_board_view.dart';
 
 void main() => runApp(const MyApp());
 
@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Material App',
-      home: const SocialView(),
+      home: OnBoardView(),
     );
   }
 }

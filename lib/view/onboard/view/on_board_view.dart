@@ -7,6 +7,7 @@ import '../../../core/base/base_widget.dart';
 import '../../../core/extension/context_extension.dart';
 import '../../../core/images/image_path_svg.dart';
 import '../../../product/widgets/avatar/on_board_circle.dart';
+import '../../login/view/login_view.dart';
 import '../model/on_board_model.dart';
 import '../viewModel/on_board_view_model.dart';
 
@@ -87,7 +88,14 @@ class OnBoardView extends StatelessWidget {
         Icons.double_arrow_outlined,
         color: context.colors.background,
       ),
-      onPressed: () {},
+      onPressed: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => LoginView(),
+          ),
+        );
+      },
     );
   }
 
