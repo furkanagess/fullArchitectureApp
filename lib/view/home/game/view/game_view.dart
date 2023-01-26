@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../../core/base/base_widget.dart';
 import '../../../../core/extension/context_extension.dart';
+import '../../../../core/images/image_constants.dart';
 import '../../../../core/localization/app_strings.dart';
 import '../model/game_view_models.dart';
 import '../viewModel/game_view_model.dart';
@@ -62,9 +63,12 @@ class GameView extends StatelessWidget {
                   return SizedBox(
                     height: context.dynamicHeight(0.3),
                     child: PageView.builder(
+                      itemCount: 3,
                       controller: PageController(viewportFraction: 0.9),
                       itemBuilder: (context, index) {
-                        return Text("data");
+                        return Card(
+                          child: Image.asset(ImageConstants.instance.cat),
+                        );
                       },
                     ),
                   );
