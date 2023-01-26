@@ -31,4 +31,12 @@ class AppStrings {
   final String findFriends = "Find Friends";
   final String follow = "Follow";
   final String next = "Next";
+
+  // Game Feed String
+  final String gameUnity = "Unity Games";
+  final String racing = "Racing";
+  final String simulator = "Simulator";
+  final String cartoon = "Cartoon";
+  final String toys = "Toys";
+  final String casual = "Casual";
 }

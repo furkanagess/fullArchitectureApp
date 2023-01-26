@@ -20,6 +20,7 @@ class AppThemeLight {
 
   TabBarTheme get _tabBarTheme {
     return TabBarTheme(
+      labelPadding: EdgeInsets.zero,
       labelColor: _appColorScheme.onPrimary,
       unselectedLabelColor: _appColorScheme.onPrimary.withOpacity(0.2),
     );
@@ -27,6 +28,8 @@ class AppThemeLight {
 
   AppBarTheme get _appBarTheme {
     return AppBarTheme(
+      backgroundColor: Colors.transparent,
+      elevation: 0,
       iconTheme: IconThemeData(
         color: _appColorScheme.primary,
         size: 15,
