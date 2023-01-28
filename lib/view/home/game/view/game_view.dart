@@ -5,7 +5,9 @@ import '../../../../core/extension/context_extension.dart';
 import '../../../../core/images/image_constants.dart';
 import '../../../../core/localization/app_strings.dart';
 import '../../../../product/widgets/button/header_button.dart';
+import '../../../../product/widgets/card/game_card.dart';
 import '../../../../product/widgets/slider/game_slider.dart';
+import '../model/game_model.dart';
 import '../model/game_view_models.dart';
 import '../viewModel/game_view_model.dart';
 
@@ -45,28 +47,15 @@ class GameView extends StatelessWidget {
                         shrinkWrap: true,
                         crossAxisCount: 3,
                         children: [
-                          Container(
-                            height: 300,
-                            child: Card(
-                              child: Padding(
-                                padding: context.paddingLow,
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Expanded(
-                                      child: Center(
-                                        child: Image.asset(
-                                          ImageConstants.instance.cat,
-                                        ),
-                                      ),
-                                    ),
-                                    Text("Title"),
-                                    Text("\$10.00"),
-                                  ],
-                                ),
-                              ),
+                          GameCard(
+                            model: GameModel(
+                              image: ImageConstants.instance.cat,
+                              name: "Watch Dogs",
+                              money: 40,
+                              category: 1,
                             ),
-                          ),
+                            onPressed: () {},
+                          )
                         ],
                       )
                     ],

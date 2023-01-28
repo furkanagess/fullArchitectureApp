@@ -1,12 +1,18 @@
+import 'package:json_annotation/json_annotation.dart';
+
+part 'game_model.g.dart';
+
+@JsonSerializable()
 class GameModel {
-  String sId;
+  @JsonKey(name: "_id")
+  String? sId;
   String image;
   String name;
   int money;
   int category;
 
   GameModel({
-    required this.sId,
+    this.sId,
     required this.image,
     required this.name,
     required this.money,
