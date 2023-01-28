@@ -39,4 +39,6 @@ class AppStrings {
   final String cartoon = "Cartoon";
   final String toys = "Toys";
   final String casual = "Casual";
+  final String topDownloads = "Top Downloads";
+  final String viewAll = "View All";
 }

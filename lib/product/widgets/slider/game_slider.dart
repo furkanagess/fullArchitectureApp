@@ -60,7 +60,7 @@ class _GameSliderState extends State<GameSlider> {
           context.dynamicWidth(0.01),
         ),
         child: CircleAvatar(
-          backgroundColor: _selectedValueIndex == index ? context.colors.onPrimary : context.colors.error,
+          backgroundColor: _selectedValueIndex == index ? context.colors.onPrimary : context.colors.onSecondary,
           radius: 10,
         ),
       ),
