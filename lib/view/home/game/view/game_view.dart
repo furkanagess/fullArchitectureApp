@@ -43,20 +43,40 @@ class GameView extends StatelessWidget {
                         titleText: AppStrings.instance.topDownloads,
                         onPressed: () {},
                       ),
-                      GridView.count(
+                      GridView.builder(
+                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: 3,
+                          childAspectRatio: 0.8,
+                        ),
+                        itemCount: 3,
                         shrinkWrap: true,
-                        crossAxisCount: 3,
-                        children: [
-                          GameCard(
-                            model: GameModel(
-                              image: ImageConstants.instance.cat,
-                              name: "Watch Dogs",
-                              money: 40,
-                              category: 1,
-                            ),
-                            onPressed: () {},
-                          )
-                        ],
+                        physics: NeverScrollableScrollPhysics(),
+                        itemBuilder: (context, index) => GameCard(
+                          model: GameModel(image: ImageConstants.instance.cat, name: "Scottish", money: 1200, category: 1),
+                          onPressed: () {},
+                        ),
+                      )
+                    ],
+                  );
+                case GameViewItems.TOP_UPDATE_GAMES_CARD:
+                  return Column(
+                    children: [
+                      HeaderButton(
+                        titleText: AppStrings.instance.topDownloads,
+                        onPressed: () {},
+                      ),
+                      GridView.builder(
+                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: 3,
+                          childAspectRatio: 0.8,
+                        ),
+                        itemCount: 3,
+                        shrinkWrap: true,
+                        physics: NeverScrollableScrollPhysics(),
+                        itemBuilder: (context, index) => GameCard(
+                          model: GameModel(image: ImageConstants.instance.cat, name: "Scottish", money: 1200, category: 1),
+                          onPressed: () {},
+                        ),
                       )
                     ],
                   );

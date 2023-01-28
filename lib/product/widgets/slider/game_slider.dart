@@ -55,6 +55,7 @@ class _GameSliderState extends State<GameSlider> {
     return ListView.builder(
       itemCount: widget.imageUrl.length,
       scrollDirection: Axis.horizontal,
+      shrinkWrap: true,
       itemBuilder: (context, index) => Padding(
         padding: EdgeInsets.all(
           context.dynamicWidth(0.01),
