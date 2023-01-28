@@ -13,6 +13,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Material App',
       home: GameView(),
+      theme: ThemeData(),
     );
   }
 }
