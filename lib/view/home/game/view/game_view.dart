@@ -4,6 +4,7 @@ import '../../../../core/base/base_widget.dart';
 import '../../../../core/extension/context_extension.dart';
 import '../../../../core/images/image_constants.dart';
 import '../../../../core/localization/app_strings.dart';
+import '../../../../product/widgets/button/header_button.dart';
 import '../../../../product/widgets/slider/game_slider.dart';
 import '../model/game_view_models.dart';
 import '../viewModel/game_view_model.dart';
@@ -36,16 +37,36 @@ class GameView extends StatelessWidget {
                 case GameViewItems.NEW_UPDATE_GAMES_CARD:
                   return Column(
                     children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      HeaderButton(
+                        titleText: AppStrings.instance.topDownloads,
+                        onPressed: () {},
+                      ),
+                      GridView.count(
+                        shrinkWrap: true,
+                        crossAxisCount: 3,
                         children: [
-                          Text(
-                            AppStrings.instance.topDownloads,
-                            style: context.textTheme.headline6?.copyWith(
-                              color: context.colors.onPrimary,
+                          Container(
+                            height: 300,
+                            child: Card(
+                              child: Padding(
+                                padding: context.paddingLow,
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Expanded(
+                                      child: Center(
+                                        child: Image.asset(
+                                          ImageConstants.instance.cat,
+                                        ),
+                                      ),
+                                    ),
+                                    Text("Title"),
+                                    Text("\$10.00"),
+                                  ],
+                                ),
+                              ),
                             ),
                           ),
-                          Text(AppStrings.instance.viewAll),
                         ],
                       )
                     ],
