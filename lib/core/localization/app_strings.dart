@@ -41,4 +41,7 @@ class AppStrings {
   final String casual = "Casual";
   final String topDownloads = "Top Downloads";
   final String viewAll = "View All";
+
+  // Settings String
+  final String settings = "Settings";
 }

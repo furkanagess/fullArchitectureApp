@@ -56,13 +56,13 @@ class GameView extends StatelessWidget {
           onPressed: () {},
         ),
         GridView.builder(
-          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 3,
             childAspectRatio: 0.8,
           ),
           itemCount: 3,
           shrinkWrap: true,
-          physics: NeverScrollableScrollPhysics(),
+          physics: const NeverScrollableScrollPhysics(),
           itemBuilder: (context, index) => GameCard(
             model: GameModel(image: ImageConstants.instance.cat, name: "Scottish", money: 1200, category: 1),
             onPressed: () {},
@@ -80,13 +80,13 @@ class GameView extends StatelessWidget {
           onPressed: () {},
         ),
         GridView.builder(
-          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 3,
             childAspectRatio: 0.8,
           ),
           itemCount: 3,
           shrinkWrap: true,
-          physics: NeverScrollableScrollPhysics(),
+          physics: const NeverScrollableScrollPhysics(),
           itemBuilder: (context, index) => GameCard(
             model: GameModel(image: ImageConstants.instance.cat, name: "Scottish", money: 1200, category: 1),
             onPressed: () {},
@@ -168,7 +168,7 @@ class GameView extends StatelessWidget {
               color: context.colors.onPrimary,
             ),
           ),
-          prefixIcon: Icon(Icons.search),
+          prefixIcon: const Icon(Icons.search),
         ),
       ),
     );

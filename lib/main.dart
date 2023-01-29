@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:random_full_app/core/theme/theme_notifier.dart';
+import 'package:random_full_app/view/settings/view/settings_view.dart';
 
 import 'view/home/game/view/game_view.dart';
 
@@ -12,8 +14,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Material App',
-      home: GameView(),
-      theme: ThemeData(),
+      home: SettingsView(),
+      theme: ThemeData.light(),
     );
   }
 }
