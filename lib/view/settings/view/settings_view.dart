@@ -17,24 +17,60 @@ class SettingsView extends StatelessWidget {
         model.init();
       },
       onPageBuilder: (BuildContext context, SettingsViewModel viewModel) => Scaffold(
-        body: CustomScrollView(
-          slivers: [
-            buildSliverAppBar(context),
-            Text("data").toSliver,
-            Card(
-              child: Padding(
-                padding: context.paddingLow,
-                child: Row(
+        body: Padding(
+          padding: context.paddingLow,
+          child: CustomScrollView(
+            slivers: [
+              buildSliverAppBar(context),
+              buildCardUser(context, viewModel).toSliver,
+              Card(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    CircleAvatar(
-                      radius: 30,
-                      child: Text(viewModel.userModel.shortName),
+                    Text(
+                      "About Project",
+                      style: context.textTheme.headline5,
                     ),
-                    Text(viewModel.userModel.fullName),
+                    const Divider(),
+                    ListTile(
+                      onTap: () {
+                        viewModel.navigateToContribution(context);
+                      },
+                      leading: Icon(Icons.favorite),
+                      title: Text("Project Contributors"),
+                      trailing: Icon(Icons.arrow_right_outlined),
+                    ),
+                    ListTile(
+                      onTap: () {
+                        viewModel.navigateToContribution(context);
+                      },
+                      leading: Icon(Icons.home),
+                      title: Text("Home Page"),
+                      trailing: Icon(Icons.arrow_right_outlined),
+                    ),
                   ],
                 ),
-              ),
-            ).toSliver,
+              ).toSliver,
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  Card buildCardUser(BuildContext context, SettingsViewModel viewModel) {
+    return Card(
+      child: Padding(
+        padding: context.paddingLow,
+        child: Row(
+          children: [
+            CircleAvatar(
+              radius: 30,
+              child: Text(viewModel.userModel.shortName),
+            ),
+            Spacer(),
+            Text(viewModel.userModel.fullName),
+            Spacer(flex: 5),
           ],
         ),
       ),
