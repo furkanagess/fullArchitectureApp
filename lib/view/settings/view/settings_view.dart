@@ -23,39 +23,62 @@ class SettingsView extends StatelessWidget {
             slivers: [
               buildSliverAppBar(context),
               buildCardUser(context, viewModel).toSliver,
-              Card(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      "About Project",
-                      style: context.textTheme.headline5,
-                    ),
-                    const Divider(),
-                    ListTile(
-                      onTap: () {
-                        viewModel.navigateToContribution(context);
-                      },
-                      leading: Icon(Icons.favorite),
-                      title: Text("Project Contributors"),
-                      trailing: Icon(Icons.arrow_right_outlined),
-                    ),
-                    ListTile(
-                      onTap: () {
-                        viewModel.navigateToContribution(context);
-                      },
-                      leading: Icon(Icons.home),
-                      title: Text("Home Page"),
-                      trailing: Icon(Icons.arrow_right_outlined),
-                    ),
-                  ],
-                ),
-              ).toSliver,
+              buildCardHeader(context, viewModel,
+                      children: [
+                        ListTile(
+                          leading: Icon(Icons.invert_colors_on_outlined),
+                          title: Text("Theme Change"),
+                          subtitle: Text("You can change application theme."),
+                          // 1:07
+                        ),
+                      ],
+                      title: "AA")
+                  .toSliver,
+              buildCardAbout(context, viewModel).toSliver,
             ],
           ),
         ),
       ),
     );
+  }
+
+  Widget buildCardHeader(BuildContext context, SettingsViewModel viewModel, {required List<Widget> children, required String title}) {
+    return Card(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            title,
+            style: context.textTheme.headline5,
+          ),
+          const Divider(),
+          ...children
+        ],
+      ),
+    );
+  }
+
+  Widget buildCardAbout(BuildContext context, SettingsViewModel viewModel) {
+    return buildCardHeader(context, viewModel,
+        children: [
+          ListTile(
+            onTap: () {
+              viewModel.navigateToContribution(context);
+            },
+            leading: Icon(Icons.favorite),
+            title: Text("Project Contributors"),
+            trailing: Icon(Icons.arrow_right_outlined),
+          ),
+          ListTile(
+            onTap: () {
+              viewModel.navigateToContribution(context);
+            },
+            leading: Icon(Icons.home),
+            title: Text("Home Page"),
+            trailing: Icon(Icons.arrow_right_outlined),
+          ),
+        ],
+        title: "AA");
   }
 
   Card buildCardUser(BuildContext context, SettingsViewModel viewModel) {

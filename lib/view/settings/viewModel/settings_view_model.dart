@@ -18,7 +18,7 @@ abstract class _SettingsViewModelBase with Store, BaseViewModel {
     Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (context) => const SettingsDynamicView(),
+          builder: (context) => SettingsDynamicView(),
         ));
   }
 }
