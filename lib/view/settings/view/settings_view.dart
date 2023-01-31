@@ -26,11 +26,11 @@ class SettingsView extends StatelessWidget {
               buildCardHeader(context, viewModel,
                       children: [
                         ListTile(
-                          leading: Icon(Icons.invert_colors_on_outlined),
-                          title: Text("Theme Change"),
-                          subtitle: Text("You can change application theme."),
-                          // 1:07
-                        ),
+                            leading: Icon(Icons.invert_colors_on_outlined),
+                            title: Text(AppStrings.instance.theme),
+                            subtitle: Text(AppStrings.instance.changeTheme)
+                            // 1:07
+                            ),
                       ],
                       title: "AA")
                   .toSliver,

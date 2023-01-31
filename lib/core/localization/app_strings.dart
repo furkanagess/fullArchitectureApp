@@ -44,4 +44,7 @@ class AppStrings {
 
   // Settings String
   final String settings = "Settings";
+  final String contributors = " Contributors";
+  final String theme = "Theme Change ";
+  final String changeTheme = "You can change application theme.";
 }

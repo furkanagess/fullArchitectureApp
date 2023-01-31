@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:random_full_app/core/extension/context_extension.dart';
+import 'package:random_full_app/core/localization/app_strings.dart';
 
 class SettingsDynamicView extends StatelessWidget {
   const SettingsDynamicView({super.key});
@@ -11,7 +12,7 @@ class SettingsDynamicView extends StatelessWidget {
       body: Column(
         children: [
           Text(
-            "Contributors",
+            AppStrings.instance.contributors,
             style: context.textTheme.headline3,
           )
         ],
