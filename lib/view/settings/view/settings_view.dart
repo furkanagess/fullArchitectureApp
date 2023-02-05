@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:random_full_app/core/base/base_widget.dart';
 import 'package:random_full_app/core/extension/widget_extension.dart';
 import 'package:random_full_app/core/localization/app_strings.dart';
+import 'package:random_full_app/core/theme/theme_notifier.dart';
 import 'package:random_full_app/view/settings/viewModel/settings_view_model.dart';
 import '../../../core/extension/context_extension.dart';
 
@@ -26,11 +27,13 @@ class SettingsView extends StatelessWidget {
               buildCardHeader(context, viewModel,
                       children: [
                         ListTile(
-                            leading: Icon(Icons.invert_colors_on_outlined),
-                            title: Text(AppStrings.instance.theme),
-                            subtitle: Text(AppStrings.instance.changeTheme)
-                            // 1:07
-                            ),
+                          title: Text(AppStrings.instance.theme),
+                          subtitle: Text(AppStrings.instance.changeTheme),
+                          trailing: IconButton(
+                            onPressed: () {},
+                            icon: Icon(Icons.nightlight_round),
+                          ),
+                        ),
                       ],
                       title: "AA")
                   .toSliver,
@@ -47,9 +50,12 @@ class SettingsView extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
-            title,
-            style: context.textTheme.headline5,
+          Padding(
+            padding: context.paddingLow,
+            child: Text(
+              title,
+              style: context.textTheme.headline5,
+            ),
           ),
           const Divider(),
           ...children
@@ -113,6 +119,7 @@ class SettingsView extends StatelessWidget {
 
   SliverAppBar buildSliverAppBar(BuildContext context) {
     return SliverAppBar(
+      backgroundColor: Colors.transparent,
       expandedHeight: 100,
       pinned: true,
       elevation: 0,
