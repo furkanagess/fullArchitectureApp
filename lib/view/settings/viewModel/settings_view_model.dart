@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:mobx/mobx.dart';
+import 'package:provider/provider.dart';
 import 'package:random_full_app/core/base/base_view_model.dart';
+import 'package:random_full_app/core/theme/theme_notifier.dart';
 import 'package:random_full_app/product/model/user.dart';
 import 'package:random_full_app/view/settings/view/subView/settings_dynamic_view.dart';
 part 'settings_view_model.g.dart';

@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
+import 'package:provider/provider.dart';
 import 'package:random_full_app/core/base/base_widget.dart';
 import 'package:random_full_app/core/extension/widget_extension.dart';
+import 'package:random_full_app/core/images/lottie_path.dart';
 import 'package:random_full_app/core/localization/app_strings.dart';
+import 'package:random_full_app/core/theme/app_theme_enum.dart';
 import 'package:random_full_app/core/theme/theme_notifier.dart';
 import 'package:random_full_app/view/settings/viewModel/settings_view_model.dart';
 import '../../../core/extension/context_extension.dart';
@@ -30,8 +34,13 @@ class SettingsView extends StatelessWidget {
                           title: Text(AppStrings.instance.theme),
                           subtitle: Text(AppStrings.instance.changeTheme),
                           trailing: IconButton(
-                            onPressed: () {},
-                            icon: Icon(Icons.nightlight_round),
+                            onPressed: () {
+                              // context.read<ThemeNotifier>().changeTheme();
+                            },
+                            icon: LottiePathEnum.SUNNY.toWidget,
+                            //   icon: context.watch<ThemeNotifier>().currentThemeEnum == AppThemes.LIGHT
+                            //       ? LottiePathEnum.MOON.toWidget
+                            //       : Icon(Icons.wb_sunny),
                           ),
                         ),
                       ],
