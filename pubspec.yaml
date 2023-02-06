@@ -42,6 +42,7 @@ dependencies:
   flutter_svg:
   auto_size_text:
   lottie:
+  
 
   # network
   vexana:
