@@ -136,5 +136,5 @@ class OnBoardView extends StatelessWidget {
     );
   }
 
-  SvgPicture buildSVG(String path) => SvgPicture.asset(SVGImagePaths.instance.catSVG);
+  SvgPicture buildSVG(String path) => SvgPicture.asset(SVGImagePaths.instance.goodDogSVG);
 }

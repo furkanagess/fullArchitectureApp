@@ -28,14 +28,14 @@ abstract class _OnBoardViewModelBase with Store, BaseViewModel {
     );
     onBoardItems.add(
       OnBoardModel(
-        "Make ",
+        "Save Animals ",
         "You are not alone. You have unique ability to go to another world.",
         SVGImagePaths.instance.dogSVG,
       ),
     );
     onBoardItems.add(
       OnBoardModel(
-        "Make It Good",
+        "Live with Nature",
         "You are not alone. You have unique ability to go to another world.",
         SVGImagePaths.instance.goodDogSVG,
       ),
