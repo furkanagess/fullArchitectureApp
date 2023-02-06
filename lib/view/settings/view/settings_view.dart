@@ -28,30 +28,68 @@ class SettingsView extends StatelessWidget {
             slivers: [
               buildSliverAppBar(context),
               buildCardUser(context, viewModel).toSliver,
-              buildCardHeader(context, viewModel,
-                      children: [
-                        ListTile(
-                          title: Text(AppStrings.instance.theme),
-                          subtitle: Text(AppStrings.instance.changeTheme),
-                          trailing: IconButton(
-                            onPressed: () {
-                              // context.read<ThemeNotifier>().changeTheme();
-                            },
-                            icon: LottiePathEnum.SUNNY.toWidget,
-                            //   icon: context.watch<ThemeNotifier>().currentThemeEnum == AppThemes.LIGHT
-                            //       ? LottiePathEnum.MOON.toWidget
-                            //       : Icon(Icons.wb_sunny),
-                          ),
-                        ),
-                      ],
-                      title: "AA")
-                  .toSliver,
+              buildCardHeaderCore(context, viewModel).toSliver,
               buildCardAbout(context, viewModel).toSliver,
+              TextButton.icon(
+                style: ButtonStyle(
+                  shape: MaterialStateProperty.all(StadiumBorder()),
+                  padding: MaterialStateProperty.all(context.paddingLow),
+                  backgroundColor: MaterialStateProperty.all(
+                    context.colors.onPrimary.withOpacity(0.7),
+                  ),
+                ),
+                onPressed: () {},
+                icon: Icon(
+                  Icons.exit_to_app_outlined,
+                  color: context.colors.primary,
+                ),
+                label: Text(
+                  "Exit",
+                  style: TextStyle(color: context.colors.primary),
+                ),
+              ).toSliver,
             ],
           ),
         ),
       ),
     );
+  }
+
+  Widget buildCardHeaderCore(BuildContext context, SettingsViewModel viewModel) {
+    return buildCardHeader(context, viewModel,
+        children: [
+          ListTile(
+            title: Text(AppStrings.instance.theme),
+            subtitle: Text(AppStrings.instance.changeTheme),
+            trailing: IconButton(
+              onPressed: () {
+                // context.read<ThemeNotifier>().changeTheme();
+              },
+              icon: LottiePathEnum.SUNNY.toWidget,
+              //   icon: context.watch<ThemeNotifier>().currentThemeEnum == AppThemes.LIGHT
+              //       ? LottiePathEnum.MOON.toWidget
+              //       : Icon(Icons.wb_sunny),
+            ),
+          ),
+          ListTile(
+            title: Text("Language Change"),
+            subtitle: Text("You can change the app language."),
+            trailing: DropdownButton<int>(
+              items: [
+                DropdownMenuItem(
+                  child: Text("tr"),
+                  value: 1,
+                ),
+                DropdownMenuItem(
+                  child: Text("en"),
+                  value: 2,
+                ),
+              ],
+              onChanged: (value) {},
+            ),
+          ),
+        ],
+        title: "AA");
   }
 
   Widget buildCardHeader(BuildContext context, SettingsViewModel viewModel, {required List<Widget> children, required String title}) {
