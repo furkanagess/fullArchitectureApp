@@ -43,6 +43,8 @@ dependencies:
   auto_size_text:
   lottie:
   
+  # localization
+  easy_localization: 
 
   # network
   vexana:
@@ -86,6 +88,7 @@ flutter:
     - assets/image/
     - assets/svg/
     - assets/lottie/
+    - assets/lang/
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
 

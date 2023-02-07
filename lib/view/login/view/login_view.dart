@@ -1,5 +1,8 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:random_full_app/core/extension/string_extension.dart';
+import 'package:random_full_app/core/init/lang/locale_keys.g.dart';
 
 import '../../../core/base/base_widget.dart';
 import '../../../core/extension/context_extension.dart';
@@ -81,7 +84,7 @@ class LoginView extends StatelessWidget {
       indicatorWeight: 5,
       indicatorColor: context.colors.onPrimary,
       tabs: [
-        Tab(text: AppStrings.instance.login),
+        Tab(text: LocaleKeys.login.locale),
         Tab(text: AppStrings.instance.signUp),
       ],
     );
